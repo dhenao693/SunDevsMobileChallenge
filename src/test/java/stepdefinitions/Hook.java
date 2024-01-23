@@ -21,9 +21,8 @@ public class Hook {
         theActor("Default");
     }
 
-    @Given("Daniel is on cinemark app")
-    public void danielIsOnCinemarkApp() {
-        String actorName = "Daniel";
+    @Given("{string} is on cinemark app")
+    public void danielIsOnCinemarkApp(String actorName) {
         theActor(actorName).attemptsTo(
                 LoadApp.toStart()
         );
