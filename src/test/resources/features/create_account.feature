@@ -5,11 +5,10 @@
     Scenario Outline: Create account successfull
       Given "Daniel" is on cinemark app
       When he registers in the app
-        | <name> | <lastName> | <otros> |
-        |        |            |         |
+        | name   | lastName   | personType   | email   | phone   | address   |
+        | <name> | <lastName> | <personType> | <email> | <phone> | <address> |
       Then see register confirmation
 
       Examples:
-        | name   | lastName | otros |
-        | Daniel | Henao    |       |
-      ##When El usuario elige el producto <producto> la manera de entrega <modoPedido> y la tienda de preferencia <lugarPedido>
+        | name   | lastName | personType | email              | phone      | address            |
+        | Daniel | Henao    | Natural    | dhenao@yopmail.com | 3181234567 | Calle siempre viva |

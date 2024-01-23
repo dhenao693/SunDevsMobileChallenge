@@ -13,7 +13,7 @@ public class LoadApp implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         try {
-            Thread.sleep(15000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -22,7 +22,7 @@ public class LoadApp implements Task {
                 .andIfSo(Click.on(BTN_ALLOW_GET_LOCATION)));
 
         try {
-            Thread.sleep(15000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
