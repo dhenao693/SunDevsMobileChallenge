@@ -1,5 +1,6 @@
 package tasks.loadapp;
 
+import interactions.WaitApp;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
@@ -17,15 +18,19 @@ public class LoadApp implements Task {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        actor.attemptsTo(Check.whether(BTN_ALLOW_GET_LOCATION.isVisibleFor(actor))
-                .andIfSo(Click.on(BTN_ALLOW_GET_LOCATION)));
-
+        actor.attemptsTo(
+                //WaitApp.forSeconds(10),
+                Check.whether(BTN_ALLOW_GET_LOCATION.isVisibleFor(actor))
+                        .andIfSo(
+                                Click.on(BTN_ALLOW_GET_LOCATION)
+                        )
+        );
         try {
-            Thread.sleep(5000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+       // actor.attemptsTo(WaitApp.forSeconds(10));
     }
 
     public static LoadApp toStart() {
