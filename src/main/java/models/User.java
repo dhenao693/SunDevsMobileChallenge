@@ -15,6 +15,7 @@ public class User {
     private final String gender;
     private final String birthdate;
     private final String documentType;
+    private final String documentNumber;
     private final String city;
     private final String preferredTheater;
     private final String password;

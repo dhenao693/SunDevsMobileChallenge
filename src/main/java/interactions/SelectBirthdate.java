@@ -6,9 +6,9 @@ import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
+import org.checkerframework.checker.units.qual.C;
 
-import static userinterface.RegisterForm.BTN_BIRTHDATE;
-import static userinterface.RegisterForm.BTN_EDIT_DATE;
+import static userinterface.RegisterForm.*;
 
 @AllArgsConstructor
 public class SelectBirthdate implements Interaction {
@@ -19,7 +19,8 @@ public class SelectBirthdate implements Interaction {
         actor.attemptsTo(
                 Click.on(BTN_BIRTHDATE),
                 Click.on(BTN_EDIT_DATE),
-                Enter.theValue(date).into(BTN_EDIT_DATE)
+                Enter.theValue(date).into(LBL_DATE),
+                Click.on(BTN_ACCEPT_DATE)
         );
     }
 

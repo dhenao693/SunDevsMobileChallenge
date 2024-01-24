@@ -55,6 +55,8 @@ dependencies {
     testCompileOnly "org.projectlombok:lombok:$rootProject.ext.lombokVersion"
     testAnnotationProcessor "org.projectlombok:lombok:$rootProject.ext.lombokVersion"
 
+    implementation group: 'co.com.devco.automation', name: 'automationDevcoLibrary', version: '2.0.4'
+
 }
 test {
     testLogging.showStandardStreams = true

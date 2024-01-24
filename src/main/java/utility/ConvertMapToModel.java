@@ -16,6 +16,7 @@ public class ConvertMapToModel {
                 .gender(map.get("gender"))
                 .birthdate(map.get("birthdate"))
                 .documentType(map.get("documentType"))
+                .documentNumber(map.get("documentNumber"))
                 .city(map.get("city"))
                 .preferredTheater(map.get("preferredTheater"))
                 .password(map.get("password"))
