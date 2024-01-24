@@ -2,6 +2,7 @@ package tasks.register;
 
 import interactions.FillFormJuridicPerson;
 import interactions.FillFormNaturalPerson;
+import interactions.GoToProfile;
 import lombok.AllArgsConstructor;
 import models.User;
 import net.serenitybdd.screenplay.Actor;
@@ -19,6 +20,7 @@ import static userinterface.LoginPage.BTN_REGISTER;
 import static userinterface.MenuOptionsPage.BTN_PROFILE;
 import static userinterface.RegisterForm.*;
 import static utility.ConvertMapToModel.convertMapToUser;
+import static utility.GenericsConstants.USER_IN_MEMORY;
 
 @AllArgsConstructor
 public class RegisterUser implements Task {
@@ -27,9 +29,9 @@ public class RegisterUser implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         User user = convertMapToUser(users.get(0));
-        actor.remember("USER",user);
-        actor.attemptsTo(Click.on(MENU),
-                Click.on(BTN_PROFILE),
+        actor.remember(USER_IN_MEMORY.toString(),user);
+        actor.attemptsTo(
+                GoToProfile.inApp(),
                 Click.on(BTN_REGISTER),
                 Click.on(LST_PERSON_TYPE),
                 Click.on(BTN_OPTION_FROM_LIST.of(user.getPersonType())),
