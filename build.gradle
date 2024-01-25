@@ -19,7 +19,7 @@ buildscript {
     }
 }
 
-ext{
+ext {
     serenityVersion = '3.2.5'
     serenityCucumberVersion = '3.2.5'
     lombokVersion = '1.18.30'
@@ -43,7 +43,7 @@ dependencies {
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.8.0'
     testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.7'
 
-     implementation group: 'net.serenity-bdd', name: 'serenity-screenplay', version: "$rootProject.ext.serenityVersion"
+    implementation group: 'net.serenity-bdd', name: 'serenity-screenplay', version: "$rootProject.ext.serenityVersion"
     implementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version: "$rootProject.ext.serenityCucumberVersion"
     implementation "net.serenity-bdd:serenity-core:${serenityVersion}"
     implementation 'net.serenity-bdd:serenity-junit:3.2.5'
