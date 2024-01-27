@@ -22,7 +22,7 @@ public class Hook {
     }
 
     @Given("{string} is on cinemark app")
-    public void danielIsOnCinemarkApp(String actorName) {
+    public void isOnCinemarkApp(String actorName) {
         theActor(actorName).attemptsTo(
                 LoadApp.toStart()
         );

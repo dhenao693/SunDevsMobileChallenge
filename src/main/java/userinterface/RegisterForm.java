@@ -1,6 +1,5 @@
 package userinterface;
 
-import io.appium.java_client.AppiumBy;
 import net.serenitybdd.screenplay.targets.Target;
 
 import static io.appium.java_client.AppiumBy.*;
@@ -34,29 +33,17 @@ public class RegisterForm {
             .located(accessibilityId("ACEPTAR"));
     public static final Target LST_DOCUMENT_TYPE = Target.the("")
             .located(xpath("//android.widget.Button[contains(@content-desc,\"Tipo de documento\")]"));
-
-
-
     public static final Target LBL_DOCUMENT_NUMBER = Target.the("")
-            .located(xpath("//android.widget.ScrollView/android.widget.EditText[5]"));
+            .located(xpath("//android.widget.ScrollView/android.widget.EditText[7]"));
 
     public static final Target LST_CITY = Target.the("")
             .located(xpath("//android.widget.Button[contains(@content-desc,\"Ciudad\")]"));
-
-
     public static final Target LST_PREFERRED_THEATER = Target.the("")
             .located(xpath("//android.widget.Button[contains(@content-desc,\"Teatro de preferencia\")]"));
-
     public static final Target LBL_PASSWORD = Target.the("")
-            .located(xpath("//android.widget.ScrollView/android.widget.EditText[6]"));
-
-
+            .located(xpath("//android.widget.ScrollView/android.widget.EditText[7]"));
     public static final Target BTN_VIEW_PASSWORD = Target.the("")
             .located(xpath("//android.widget.ScrollView/android.widget.EditText[6]/android.view.View[1]"));
-
     public static final Target BTN_ACCEPT_TERMS = Target.the("")
             .located(xpath("//android.widget.ScrollView/android.view.View[2]"));
-
-    public static final Target BTN_CONTINUE = Target.the("")
-            .located(accessibilityId("CONTINUAR"));
 }

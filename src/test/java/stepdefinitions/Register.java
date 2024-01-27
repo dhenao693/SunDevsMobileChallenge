@@ -1,7 +1,7 @@
 package stepdefinitions;
 
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import tasks.register.RegisterUser;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.Map;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class Register {
-    @Given("he registers in the app")
+    @When("he registers in the app")
     public void registerInApp(List <Map<String,String>> users) {
         theActorInTheSpotlight().attemptsTo(
                 RegisterUser.inApp(users)

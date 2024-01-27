@@ -26,7 +26,6 @@ public class LoginUser implements Task {
         User user = convertMapToUser(users.get(0));
         actor.remember(USER_IN_MEMORY.toString(),user);
         actor.attemptsTo(
-                GoToProfile.inApp(),
                 Click.on(LBL_USER),
                 Enter.theValue(user.getEmail()).into(LBL_USER),
                 Click.on(LBL_PASSSWORD),

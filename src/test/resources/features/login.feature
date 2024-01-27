@@ -4,7 +4,7 @@
 
     Scenario Outline: Login successfull
       Given "Daniel" is on cinemark app
-      When he login in app
+      When he login in app from profile
         | name   | lastName   | personType   | email   | phone   | address   | gender   | birthdate   | documentType   | documentNumber   | city   | preferredTheater   | password   |
         | <name> | <lastName> | <personType> | <email> | <phone> | <address> | <gender> | <birthdate> | <documentType> | <documentNumber> | <city> | <preferredTheater> | <password> |
       And see the profile

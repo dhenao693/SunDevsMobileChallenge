@@ -7,6 +7,8 @@ import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.actions.Scroll;
+import userinterface.GeneralPage;
 
 import static userinterface.RegisterForm.*;
 
@@ -33,13 +35,40 @@ public class FillFormNaturalPerson implements Interaction {
                 Click.on(BTN_OPTION_FROM_LIST.of(user.getGender())),
                 //SelectBirthdate.of(user.getBirthdate()),
                 Click.on(LST_DOCUMENT_TYPE),
-                Click.on(BTN_OPTION_FROM_LIST.of(user.getPersonType()))
+                Click.on(BTN_OPTION_FROM_LIST.of(user.getDocumentType()))
+        );
 
+        actor.attemptsTo(
+                Click.on(LBL_DOCUMENT_NUMBER),
+                Enter.theValue(user.getDocumentNumber()).into(LBL_DOCUMENT_NUMBER));
+
+        actor.attemptsTo(
+                Click.on(LST_CITY),
+                Click.on(BTN_OPTION_FROM_LIST.of(user.getCity())));
+
+        actor.attemptsTo(
+                Scroll.to(LST_PREFERRED_THEATER).andAlignToTop());
+
+        actor.attemptsTo(
+                Click.on(LST_PREFERRED_THEATER),
+                Click.on(BTN_OPTION_FROM_LIST.of(user.getPreferredTheater())));
+
+        actor.attemptsTo(
+
+                Click.on(LBL_PASSWORD),
+                Enter.theValue(user.getPassword()).into(LBL_PASSWORD));
+
+        actor.attemptsTo(
+                Click.on(BTN_VIEW_PASSWORD),
+
+                Click.on(BTN_ACCEPT_TERMS)
+                ,
+                Click.on(GeneralPage.BTN_CONTINUE)
         );
 
     }
 
     public static FillFormNaturalPerson toRegister(User user) {
-        return Tasks.instrumented(FillFormNaturalPerson.class,user);
+        return Tasks.instrumented(FillFormNaturalPerson.class, user);
     }
 }

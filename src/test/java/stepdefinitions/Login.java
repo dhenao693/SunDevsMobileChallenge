@@ -17,8 +17,16 @@ import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class Login {
 
-    @When("he login in app")
+    @When("he login in app from profile")
     public void registerInApp(List<Map<String,String>> users) {
+        theActorInTheSpotlight().attemptsTo(
+                GoToProfile.inApp(),
+                LoginUser.inApp(users)
+        );
+    }
+
+    @When("he login in app")
+    public void loginInApp(List<Map<String,String>> users) {
         theActorInTheSpotlight().attemptsTo(
                 LoginUser.inApp(users)
         );
