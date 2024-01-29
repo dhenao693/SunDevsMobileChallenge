@@ -11,14 +11,15 @@ import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.conditions.Check;
+import net.serenitybdd.screenplay.waits.Wait;
 
 import java.util.List;
 import java.util.Map;
 
 import static models.builders.CreditCardBuilder.selectCreditCardTypeApproved;
-import static org.openqa.selenium.Keys.ENTER;
-import static userinterface.GeneralPage.BTN_ACCEPT;
-import static userinterface.GeneralPage.BTN_CONTINUE;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
+import static net.serenitybdd.screenplay.questions.WebElementQuestion.the;
+import static userinterface.GeneralPage.*;
 import static userinterface.HomePage.*;
 import static userinterface.PersonalInfoPage.LBL_ACCEPT_TERMS_AND_CONDITIONS;
 import static userinterface.PersonalInfoPage.LBL_SELECT_COUNTRY;
@@ -36,25 +37,46 @@ public class BuyTicketsToMovie implements Task {
         CreditCard creditCard1 = selectCreditCardTypeApproved(convertMapToCreditCard(creditCard.get(0)));
         actor.remember(CARD_IN_MEMORY, creditCard1);
 
+        actor.attemptsTo(Wait.until(
+                the(MENU), isVisible()).forNoMoreThan(30).seconds());
         actor.attemptsTo(
-                Click.on(BTN_FIRST_MOVIE),
-                WaitPage.aSeconds(5));
-        actor.attemptsTo(
-                Click.on(BTN_MOVIE_TIME),
-                WaitPage.aSeconds(15)
+                Click.on(BTN_FIRST_MOVIE)
         );
+        actor.attemptsTo(Wait.until(
+                the(BTN_TODAY), isVisible()).forNoMoreThan(30).seconds());
+        actor.attemptsTo(
+                Click.on(BTN_MOVIE_TIME)
+        );
+        actor.attemptsTo(WaitPage.aSeconds(10000));
 
+
+        actor.attemptsTo(Wait.until(
+                the(BTN_ADD_SEAT), isVisible()).forNoMoreThan(30).seconds());
         actor.attemptsTo(
                 Click.on(BTN_ADD_SEAT)
+        );
+        actor.attemptsTo(
+                Click.on(BTN_CONTINUE)
+        );
+
+
+        actor.attemptsTo(Wait.until(
+                the(LBL_LOCATION_IN_ROOM), isVisible()).forNoMoreThan(30).seconds());
+        actor.attemptsTo(
+                Click.on(BTN_SELECT_SEAT_POSITION)
         );
 
         actor.attemptsTo(
                 Click.on(BTN_CONTINUE)
         );
+        actor.attemptsTo(WaitPage.aSeconds(5000));
 
         actor.attemptsTo(Check.whether(BTN_ACCEPT.isVisibleFor(actor))
                 .andIfSo(Click.on(BTN_ACCEPT)));
 
+
+        actor.attemptsTo(Wait.until(
+                the(BTN_SELECT_CANDY), isVisible()).forNoMoreThan(30).seconds());
         actor.attemptsTo(
                 Click.on(BTN_SELECT_CANDY)
         );
@@ -67,10 +89,14 @@ public class BuyTicketsToMovie implements Task {
                 Click.on(BTN_CONTINUE)
         );
 
+
+        actor.attemptsTo(Wait.until(
+                the(LBL_SELECT_COUNTRY), isVisible()).forNoMoreThan(30).seconds());
         actor.attemptsTo(
                 Click.on(LBL_SELECT_COUNTRY),
                 Enter.theValue(user.getCity()).into(LBL_SELECT_COUNTRY),
-                Enter.keyValues(ENTER).into(LBL_SELECT_COUNTRY));
+                Click.on(LBL_SELECT_OPTION_VIEW_BY_CTN_DESC.of(user.getCity()))
+        );
 
         actor.attemptsTo(
                 Click.on(LBL_ACCEPT_TERMS_AND_CONDITIONS));
