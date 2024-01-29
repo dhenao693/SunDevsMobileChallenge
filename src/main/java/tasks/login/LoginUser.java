@@ -8,12 +8,16 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.waits.Wait;
 import utility.GenericsConstants;
 
 import java.util.List;
 import java.util.Map;
 
 
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
+import static net.serenitybdd.screenplay.questions.WebElementQuestion.the;
+import static userinterface.HomePage.MENU;
 import static userinterface.LoginPage.*;
 import static utility.ConvertMapToModel.convertMapToUser;
 import static utility.GenericsConstants.USER_IN_MEMORY;
@@ -25,6 +29,8 @@ public class LoginUser implements Task {
     public <T extends Actor> void performAs(T actor) {
         User user = convertMapToUser(users.get(0));
         actor.remember(USER_IN_MEMORY.toString(),user);
+        actor.attemptsTo(Wait.until(
+                the(BTN_LOGIN) , isVisible()).forNoMoreThan(30).seconds());
         actor.attemptsTo(
                 Click.on(LBL_USER),
                 Enter.theValue(user.getEmail()).into(LBL_USER),

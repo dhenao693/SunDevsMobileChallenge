@@ -4,13 +4,18 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.waits.Wait;
 
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
+import static net.serenitybdd.screenplay.questions.WebElementQuestion.the;
 import static userinterface.HomePage.MENU;
 import static userinterface.MenuOptionsPage.BTN_PROFILE;
 
 public class GoToProfile implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
+        actor.attemptsTo(Wait.until(
+                the(MENU) , isVisible()).forNoMoreThan(30).seconds());
         actor.attemptsTo(Click.on(MENU),
                 Click.on(BTN_PROFILE));
     }

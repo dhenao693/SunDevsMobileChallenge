@@ -13,4 +13,7 @@ public class GeneralPage {
 
     public static final Target LBL_SELECT_OPTION_BY_ACC_ID = Target.the("")
             .locatedBy("//android.widget.Button[contains(@content-desc,'{0}')]");
+
+    public static final Target LBL_SELECT_OPTION_VIEW_BY_CTN_DESC = Target.the("")
+            .locatedBy("//android.view.View[contains(@content-desc,'{0}')]");
 }
